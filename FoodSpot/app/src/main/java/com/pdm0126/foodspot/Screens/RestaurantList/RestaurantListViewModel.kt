@@ -15,7 +15,7 @@ class RestaurantListViewModel: ViewModel() {
     private val _restaurant = MutableStateFlow<List<Restaurant>>(emptyList())
     val restaurant = _restaurant.asStateFlow()
 
-    private val _loading = MutableStateFlow<Boolean>(false)
+    private val _loading = MutableStateFlow(false)
     val loading = _loading.asStateFlow()
 
     init {

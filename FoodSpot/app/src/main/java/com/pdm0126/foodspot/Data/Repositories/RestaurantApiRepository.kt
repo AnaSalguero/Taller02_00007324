@@ -10,26 +10,19 @@ class RestaurantApiRepository: RestaurantRepository {
         return sampleRestaurants
     }
 
-    override suspend fun getRestaurantByID(id : Int): Restaurant? {
+    override suspend fun getRestaurantByID(id: Int): Restaurant? {
         delay(3000)
         return sampleRestaurants.find { it.id == id }
     }
 
-    override suspend fun getRestaurantBySearch(searchText: String): Restaurant? {
+    override suspend fun getRestaurantBySearch(searchText: String): List<Restaurant> {
         delay(3000)
-        return sampleRestaurants.find { res ->
-            res.name.contains(searchText)
-                    ||
-            res.menu.any{ dish ->
-                dish.name.contains(searchText)
+        return sampleRestaurants.filter { res ->
+            res.name.contains(searchText,
+                ignoreCase = true) || res.menu.any { dish ->
+                dish.name.contains(searchText,
+                    ignoreCase = true)
             }
-        }
-    }
-    //este quiza no??
-    override suspend fun getRestaurantByCategory(category: String): Restaurant? {
-        delay(3000)
-        return sampleRestaurants.find { res ->
-            res.categories.contains(category)
         }
     }
 }

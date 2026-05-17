@@ -1,6 +1,8 @@
 package com.pdm0126.foodspot
 
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation3.runtime.entryProvider
 import androidx.navigation3.runtime.rememberNavBackStack
@@ -40,8 +42,8 @@ fun App() {
                     navigateBack = {
                         backStack.removeLastOrNull()
                     },
-                    navDetail = {
-
+                    navDetail = { restaurantId ->
+                        backStack.add(Routes.RestaurantDetail(restaurantId))
                     }
                 )
             }

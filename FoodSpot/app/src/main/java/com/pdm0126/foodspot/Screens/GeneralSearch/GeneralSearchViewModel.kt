@@ -12,10 +12,10 @@ import kotlinx.coroutines.launch
 class GeneralSearchViewModel: ViewModel() {
     private val restaurantRepository: RestaurantRepository = RestaurantApiRepository()
 
-    private val _search = MutableStateFlow<Restaurant?>(null)
+    private val _search = MutableStateFlow<List<Restaurant>>(emptyList())
     val search = _search.asStateFlow()
 
-    private val _loading = MutableStateFlow<Boolean>(false)
+    private val _loading = MutableStateFlow(false)
     val loading = _loading.asStateFlow()
 
     fun loadGeneralSearch(searchVar: String){
@@ -25,5 +25,4 @@ class GeneralSearchViewModel: ViewModel() {
             _loading.value = false
         }
     }
-
 }

@@ -1,5 +1,6 @@
 package com.pdm0126.foodspot.Screens.RestaurantList
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -100,9 +101,11 @@ fun RestaurantList(navDetail: (Int) -> Unit, navSearch: () ->Unit, viewModel: Re
                                 Card(
                                     modifier = Modifier
                                         .padding(10.dp)
-                                        .size(width = 140.dp, height = 170.dp),
+                                        .size(width = 140.dp, height = 170.dp)
+                                        .clickable{
+                                            navDetail(res.id)
+                                        },
                                     shape = RoundedCornerShape(16.dp),
-                                    onClick = {navDetail(res.id)}
                                 ) {
                                     Column {
 

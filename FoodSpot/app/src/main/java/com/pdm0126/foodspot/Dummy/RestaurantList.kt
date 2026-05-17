@@ -23,7 +23,7 @@ val sampleRestaurants = listOf(
                 name = "Pizza Pepperoni",
                 description = "Pepperoni con queso mozzarella derretido",
                 price = 14.00,
-                imageUrl = "https://images.unsplash.com/photo-15343089834964fabb1a015ee?q=80&w=1176"
+                imageUrl = "https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=1170"
             )
         )
     ),

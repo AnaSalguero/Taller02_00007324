@@ -15,13 +15,14 @@ class RestaurantDetailViewModel: ViewModel() {
     private val _restaurantbyId = MutableStateFlow<Restaurant?>(null)
     val restaurantById = _restaurantbyId.asStateFlow()
 
-    private val _loading = MutableStateFlow<Boolean>(false)
+    private val _loading = MutableStateFlow(false)
     val loading = _loading.asStateFlow()
 
     fun loadRestaurantByID (id: Int){
         viewModelScope.launch {
             _loading.value = true
             _restaurantbyId.value = restaurantRepository.getRestaurantByID(id)
+            _loading.value = false
         }
     }
 }

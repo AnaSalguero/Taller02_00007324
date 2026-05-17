@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -41,7 +40,6 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.rememberCoroutineScope
 
 @OptIn(ExperimentalMaterial3Api::class)
 
@@ -50,8 +48,6 @@ fun RestaurantDetail(restaurantId: Int, navigateBack: () -> Unit, viewModel: Res
     val restaurantById by viewModel.restaurantById.collectAsState()
     val loading by viewModel.loading.collectAsState()
     val context = LocalContext.current
-
-    val scope = rememberCoroutineScope()
 
     LaunchedEffect(restaurantId) {
         viewModel.loadRestaurantByID(restaurantId)
@@ -66,7 +62,7 @@ fun RestaurantDetail(restaurantId: Int, navigateBack: () -> Unit, viewModel: Res
                         titleContentColor = MaterialTheme.colorScheme.primary,
                     ),
                     title = {
-                        Text(it.name)
+                        Text(if(loading)"" else it.name)
                     },
                     navigationIcon = {
                         IconButton(onClick = {navigateBack()}) {
@@ -96,11 +92,9 @@ fun RestaurantDetail(restaurantId: Int, navigateBack: () -> Unit, viewModel: Res
                     }
 
                     items(it.menu){ dish ->
-                        Card(
-                            modifier = Modifier
-                                .fillMaxWidth()
-                                .height(160.dp)
-                                .padding(horizontal = 12.dp, vertical = 8.dp),
+                        Card( modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(horizontal = 12.dp, vertical = 8.dp),
                             shape = RoundedCornerShape(18.dp),
                             elevation = CardDefaults.cardElevation(6.dp)
                         ) {
