@@ -10,6 +10,7 @@ import androidx.navigation3.ui.NavDisplay
 import com.pdm0126.foodspot.Screens.RestaurantList.RestaurantList
 import com.pdm0126.foodspot.Screens.RestaurantDetail.RestaurantDetail
 import com.pdm0126.foodspot.Screens.GeneralSearch.GeneralSearch
+import com.pdm0126.foodspot.Screens.ShoppingCart.ShoppingCart
 
 @Composable
 fun App() {
@@ -26,6 +27,9 @@ fun App() {
                     },
                     navSearch = {
                         backStack.add(Routes.GeneralSearch)
+                    },
+                    navCart = {
+                        backStack.add(Routes.Cart)
                     }
                 )
             }
@@ -34,6 +38,9 @@ fun App() {
                     restaurantId = key.restaurantId,
                     navigateBack = {
                         backStack.removeLastOrNull()
+                    },
+                    navCart = {
+                        backStack.add(Routes.Cart)
                     }
                 )
             }
@@ -44,6 +51,13 @@ fun App() {
                     },
                     navDetail = { restaurantId ->
                         backStack.add(Routes.RestaurantDetail(restaurantId))
+                    }
+                )
+            }
+            entry< Routes.Cart>{
+                ShoppingCart(
+                    navigateBack = {
+                        backStack.removeLastOrNull()
                     }
                 )
             }

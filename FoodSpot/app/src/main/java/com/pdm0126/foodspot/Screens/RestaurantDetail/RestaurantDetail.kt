@@ -1,6 +1,7 @@
 package com.pdm0126.foodspot.Screens.RestaurantDetail
 
 import android.widget.Toast
+import androidx.activity.ComponentActivity
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -15,6 +16,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBackIosNew
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -40,14 +42,19 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil3.compose.AsyncImage
 import androidx.compose.runtime.LaunchedEffect
+import com.pdm0126.foodspot.Screens.ShoppingCart.ShoppingCartViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun RestaurantDetail(restaurantId: Int, navigateBack: () -> Unit, viewModel: RestaurantDetailViewModel = viewModel()){
+fun RestaurantDetail(restaurantId: Int, navigateBack: () -> Unit,navCart: () -> Unit, viewModel: RestaurantDetailViewModel = viewModel()){
+
     val restaurantById by viewModel.restaurantById.collectAsState()
     val loading by viewModel.loading.collectAsState()
+
     val context = LocalContext.current
+    val activity = context as ComponentActivity
+    val cartViewModel: ShoppingCartViewModel = viewModel(activity)
 
     LaunchedEffect(restaurantId) {
         viewModel.loadRestaurantByID(restaurantId)
@@ -69,6 +76,14 @@ fun RestaurantDetail(restaurantId: Int, navigateBack: () -> Unit, viewModel: Res
                             Icon(
                                 imageVector = Icons.Default.ArrowBackIosNew,
                                 contentDescription = "GoBack"
+                            )
+                        }
+                    },
+                    actions = {
+                        IconButton(onClick = {navCart()}) {
+                            Icon(
+                                imageVector = Icons.Default.ShoppingCart,
+                                contentDescription = "Cart"
                             )
                         }
                     }
@@ -141,6 +156,7 @@ fun RestaurantDetail(restaurantId: Int, navigateBack: () -> Unit, viewModel: Res
 
                                     Button(
                                         onClick = {
+                                            cartViewModel.addToCart(dish)
                                             Toast.makeText(
                                                 context,
                                                 "${dish.name} Agregado al carrito",

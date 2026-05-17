@@ -9,7 +9,7 @@ val sampleRestaurants = listOf(
         name = "Pizza Place",
         description = "Las mejores pizzas artesanales de la ciudad",
         imageUrl = "https://images.unsplash.com/photo-1611915365928-565c527a0590?q=80&w=1025",
-        categories = listOf("Italiana", "Pizzas","Fast Food"),
+        categories = listOf("Italiana", "Pizzas","Fast Food","Casual Dining"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -32,7 +32,7 @@ val sampleRestaurants = listOf(
         name = "Burger Town",
         description = "Hamburguesas gourmet y papas crujientes",
         imageUrl = "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=699",
-        categories = listOf("Hamburguesas", "Fast Food"),
+        categories = listOf("Hamburguesas", "Fast Food","Americana","Parrilla"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -62,7 +62,7 @@ val sampleRestaurants = listOf(
         name = "Sushi House",
         description = "Auténtica comida japonesa",
         imageUrl = "https://images.unsplash.com/photo-1579871494447-9811cf80d66c?q=80&w=687",
-        categories = listOf("Japonesa", "Sushi"),
+        categories = listOf("Japonesa", "Sushi","Asiatica","Saludable"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -92,7 +92,7 @@ val sampleRestaurants = listOf(
         name = "Taco Fiesta",
         description = "Los mejores tacos mexicanos",
         imageUrl = "https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?q=80&w=687",
-        categories = listOf("Mexicana"),
+        categories = listOf("Mexicana","Tacos","Street Food", "Parrilla"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -122,7 +122,7 @@ val sampleRestaurants = listOf(
         name = "Healthy Bowl",
         description = "Comida saludable y fresca",
         imageUrl = "https://images.unsplash.com/photo-1547592180-85f173990554?q=80&w=687",
-        categories = listOf("Saludable", "Ensaladas"),
+        categories = listOf("Saludable", "Ensaladas","Vegetariana","Fresh Food"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -152,7 +152,7 @@ val sampleRestaurants = listOf(
         name = "Pasta Italia",
         description = "Pastas y recetas italianas",
         imageUrl = "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?q=80&w=687",
-        categories = listOf("Italiana", "Pastas"),
+        categories = listOf("Italiana", "Pastas","Gourmet","Casual Dining"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -182,7 +182,7 @@ val sampleRestaurants = listOf(
         name = "Coffee Corner",
         description = "Café, postres y desayunos",
         imageUrl = "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=687",
-        categories = listOf("Café", "Postres"),
+        categories = listOf("Café", "Postres","Desayunos","Casual Dining"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -212,7 +212,7 @@ val sampleRestaurants = listOf(
         name = "Seafood Market",
         description = "Mariscos frescos todos los días",
         imageUrl = "https://images.unsplash.com/photo-1559847844-5315695dadae?q=80&w=687",
-        categories = listOf("Mariscos"),
+        categories = listOf("Mariscos","Mediterranea","Gourmet","Parrilla"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -242,7 +242,7 @@ val sampleRestaurants = listOf(
         name = "BBQ House",
         description = "Carnes ahumadas y parrilladas",
         imageUrl = "https://images.unsplash.com/photo-1529193591184-b1d58069ecdd?q=80&w=687",
-        categories = listOf("Parrilla", "Carnes"),
+        categories = listOf("Parrilla", "Carnes","Americana","Ahumados"),
         menu = listOf(
             Dish(
                 id = 1,
@@ -272,7 +272,7 @@ val sampleRestaurants = listOf(
         name = "Sweet Paradise",
         description = "Postres y helados irresistibles",
         imageUrl = "https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=687",
-        categories = listOf("Postres", "Helados"),
+        categories = listOf("Postres", "Helados","Dulces","Cafeteria"),
         menu = listOf(
             Dish(
                 id = 1,

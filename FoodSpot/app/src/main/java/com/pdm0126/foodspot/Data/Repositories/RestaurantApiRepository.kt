@@ -1,6 +1,7 @@
 package com.pdm0126.foodspot.Data.Repositories
 
 import com.pdm0126.foodspot.Dummy.sampleRestaurants
+import com.pdm0126.foodspot.Model.Dish
 import com.pdm0126.foodspot.Model.Restaurant
 import kotlinx.coroutines.delay
 
@@ -24,5 +25,8 @@ class RestaurantApiRepository: RestaurantRepository {
                     ignoreCase = true)
             }
         }
+    }
+    override suspend fun getDishById(restaurantId: Int, dishID: Int): Dish? {
+        TODO("Not yet implemented")
     }
 }

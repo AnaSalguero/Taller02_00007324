@@ -1,5 +1,6 @@
 package com.pdm0126.foodspot.Screens.RestaurantList
 
+import androidx.collection.intIntMapOf
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -31,6 +32,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Card
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
@@ -40,7 +42,7 @@ import coil3.compose.AsyncImage
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun RestaurantList(navDetail: (Int) -> Unit, navSearch: () ->Unit, viewModel: RestaurantListViewModel = viewModel()){
+fun RestaurantList(navDetail: (Int) -> Unit, navSearch: () ->Unit,navCart:() -> Unit, viewModel: RestaurantListViewModel = viewModel()){
 
     val restaurants by viewModel.restaurant.collectAsState()
     val loading by viewModel.loading.collectAsState()
@@ -62,6 +64,12 @@ fun RestaurantList(navDetail: (Int) -> Unit, navSearch: () ->Unit, viewModel: Re
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = "Search"
+                        )
+                    }
+                    IconButton(onClick = {navCart()}) {
+                        Icon(
+                            imageVector = Icons.Default.ShoppingCart,
+                            contentDescription = "Cart"
                         )
                     }
                 }
