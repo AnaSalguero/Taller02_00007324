@@ -6,5 +6,5 @@ interface RestaurantRepository {
     suspend fun getRestaurants():List<Restaurant>
     suspend fun getRestaurantByID(id: Int): Restaurant?
     suspend fun getRestaurantBySearch(searchText: String): List<Restaurant>
-    suspend fun getDishById(restaurantId: Int, dishID: Int): Dish?
+
 }

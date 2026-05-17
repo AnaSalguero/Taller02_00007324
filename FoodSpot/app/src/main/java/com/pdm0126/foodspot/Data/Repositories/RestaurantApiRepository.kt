@@ -26,7 +26,4 @@ class RestaurantApiRepository: RestaurantRepository {
             }
         }
     }
-    override suspend fun getDishById(restaurantId: Int, dishID: Int): Dish? {
-        TODO("Not yet implemented")
-    }
 }
