@@ -2,7 +2,6 @@ package com.pdm0126.foodspot.Data.Repositories
 
 import com.pdm0126.foodspot.Dummy.sampleRestaurants
 import com.pdm0126.foodspot.Model.Restaurant
-import com.pdm0126.foodspot.Model.Dish
 import kotlinx.coroutines.delay
 
 class RestaurantApiRepository: RestaurantRepository {
@@ -19,6 +18,13 @@ class RestaurantApiRepository: RestaurantRepository {
             res.menu.any{ dish ->
                 dish.name.contains(searchText)
             }
+        }
+    }
+
+    override suspend fun getRestaurantByCategory(category: String): Restaurant? {
+        delay(3000)
+        return sampleRestaurants.find { res ->
+            res.categories.contains(category)
         }
     }
 }
