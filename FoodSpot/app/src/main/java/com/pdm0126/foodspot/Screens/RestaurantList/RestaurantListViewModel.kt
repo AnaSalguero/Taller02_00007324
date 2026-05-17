@@ -1,6 +1,5 @@
 package com.pdm0126.foodspot.Screens.RestaurantList
 
-import androidx.compose.runtime.MutableState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.pdm0126.foodspot.Data.Repositories.RestaurantApiRepository

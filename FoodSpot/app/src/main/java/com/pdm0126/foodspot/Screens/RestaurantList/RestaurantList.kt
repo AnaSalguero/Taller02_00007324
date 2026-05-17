@@ -27,7 +27,6 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.foundation.lazy.items
@@ -40,9 +39,12 @@ import coil3.compose.AsyncImage
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun RestaurantList(viewModel: RestaurantListViewModel = viewModel()){
+fun RestaurantList(navDetail: (Int) -> Unit, navSearch: () ->Unit, viewModel: RestaurantListViewModel = viewModel()){
+
     val restaurants by viewModel.restaurant.collectAsState()
     val loading by viewModel.loading.collectAsState()
+
+    val listCat = mutableSetOf<String>()
 
     Scaffold(
         topBar = {
@@ -55,7 +57,7 @@ fun RestaurantList(viewModel: RestaurantListViewModel = viewModel()){
                     Text("FoodSpot")
                 },
                 actions = {
-                    IconButton(onClick = { }) {
+                    IconButton(onClick = {navSearch()}) {
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = "Search"
@@ -78,11 +80,10 @@ fun RestaurantList(viewModel: RestaurantListViewModel = viewModel()){
                     .fillMaxSize()
                     .padding(innerPadding).padding(15.dp)
             ) {
-                val otherCat = mutableSetOf<String>()
                 restaurants.forEach { res ->
-                    res.categories.forEach{ otherCat.add(it) }
+                    res.categories.forEach{ listCat.add(it) }
                 }
-                otherCat.forEach { cat ->
+                listCat.forEach { cat ->
                     item {
                         Text(text = cat,
                             style = MaterialTheme.typography.titleLarge,
@@ -100,7 +101,8 @@ fun RestaurantList(viewModel: RestaurantListViewModel = viewModel()){
                                     modifier = Modifier
                                         .padding(10.dp)
                                         .size(width = 140.dp, height = 170.dp),
-                                    shape = RoundedCornerShape(16.dp)
+                                    shape = RoundedCornerShape(16.dp),
+                                    onClick = {navDetail(res.id)}
                                 ) {
                                     Column {
 
@@ -131,8 +133,3 @@ fun RestaurantList(viewModel: RestaurantListViewModel = viewModel()){
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun Preview (){
-    RestaurantList()
-}
